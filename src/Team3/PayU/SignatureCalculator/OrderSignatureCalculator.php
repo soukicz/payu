@@ -69,7 +69,7 @@ class OrderSignatureCalculator implements OrderSignatureCalculatorInterface
         AlgorithmInterface $algorithm
     ) {
         $signature = $this->signatureCalculator->calculate(
-            $this->getSortedParameters($order),
+            json_encode($this->getSortedParameters($order)),
             $credentials,
             $algorithm
         );
