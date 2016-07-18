@@ -33,7 +33,7 @@ class SignatureCalculator implements SignatureCalculatorInterface
     /**
      * Calculates signature for any data given as an array of strings.
      *
-     * @param string[]             $data
+     * @param string               $data
      * @param CredentialsInterface $credentials private key is needed to calculate signature
      * @param AlgorithmInterface   $algorithm   calculator uses encoder which can use multiple algorithms
      *
@@ -41,15 +41,11 @@ class SignatureCalculator implements SignatureCalculatorInterface
      * @throws SignatureCalculatorException
      */
     public function calculate(
-        array $data,
+        $data,
         CredentialsInterface $credentials,
         AlgorithmInterface $algorithm
     ) {
-        $concatenated = '';
-        array_walk_recursive($data, function ($value) use (&$concatenated) {
-            $concatenated .= $value;
-        });
-        $concatenated .= $credentials->getPrivateKey();
+        $concatenated = $data . $credentials->getPrivateKey();
 
         return $this->encode($concatenated, $algorithm);
     }

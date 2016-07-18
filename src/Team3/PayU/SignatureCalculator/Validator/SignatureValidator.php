@@ -64,7 +64,7 @@ class SignatureValidator implements SignatureValidatorInterface
         $calculatedSignature = $this
             ->signatureCalculator
             ->calculate(
-                json_decode($data, true),
+                $data,
                 $credentials,
                 $this->extractAlgorithm($signatureHeader)
             );

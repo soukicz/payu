@@ -16,7 +16,7 @@ use Team3\PayU\SignatureCalculator\Encoder\Algorithms\AlgorithmInterface;
 interface SignatureCalculatorInterface
 {
     /**
-     * @param string[]             $data
+     * @param string               $data
      * @param CredentialsInterface $credentials
      * @param AlgorithmInterface   $algorithm
      *
@@ -24,7 +24,7 @@ interface SignatureCalculatorInterface
      * @throws SignatureCalculatorException
      */
     public function calculate(
-        array $data,
+        $data,
         CredentialsInterface $credentials,
         AlgorithmInterface $algorithm
     );
