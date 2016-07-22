@@ -90,10 +90,10 @@ class Sender implements SenderInterface
             CURLOPT_USERPWD => sprintf(
                 '%s:%s',
                 $credentials->getMerchantPosId(),
-                $credentials->getMerchantPosId()
+                $credentials->getPrivateKey()
             ),
-            CURLOPT_SSLVERSION => 1,
-            CURLOPT_SSL_CIPHER_LIST => $credentials->getEncryptionProtocols(),
+            // CURLOPT_SSLVERSION => 1,
+            // CURLOPT_SSL_CIPHER_LIST => $credentials->getEncryptionProtocols(),
             CURLOPT_SSL_VERIFYHOST => 2,
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_ENCODING => 'gzip',
